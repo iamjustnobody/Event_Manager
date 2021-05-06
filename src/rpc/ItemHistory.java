@@ -91,7 +91,7 @@ public class ItemHistory extends HttpServlet {
 		try {
 			JSONObject input=RpcHelper.readJSONObject(request);
 			String userId=input.getString("user_id");
-			JSONArray array=input.getJSONArray("favourite");
+			JSONArray array=input.getJSONArray("favorite");
 			List<String> itemIds=new ArrayList<>();
 			for(int i=0;i<array.length();++i) {
 				itemIds.add(array.getString(i));
@@ -114,7 +114,7 @@ public class ItemHistory extends HttpServlet {
 		try {
 			JSONObject input=RpcHelper.readJSONObject(request);
 			String userId=input.getString("user_id");
-			JSONArray array=input.getJSONArray("favourite");
+			JSONArray array=input.getJSONArray("favorite");
 			List<String> itemIds=new ArrayList<>();
 			for(int i=0;i<array.length();++i) {
 				itemIds.add(array.getString(i));

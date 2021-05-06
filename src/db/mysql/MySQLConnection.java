@@ -176,7 +176,8 @@ public class MySQLConnection implements DBConnection {
     	   return;
        }
        try {
-    	   String sql="INSERT IGNORE INTO items VALUES (?,?,?,?,?,?,?)";
+    	   //String sql="INSERT IGNORE INTO items VALUES (?,?,?,?,?,?,?)";
+    	   String sql="INSERT INTO items VALUES (?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE name=?,rating=?,address=?,image_url=?,url=?,DISTANCE=?";
     	   PreparedStatement ps=conn.prepareStatement(sql);
     	   ps.setString(1, item.getItemId());
     	   ps.setString(2, item.getName());
@@ -185,6 +186,13 @@ public class MySQLConnection implements DBConnection {
     	   ps.setString(5, item.getImageUrl());
     	   ps.setString(6, item.getUrl());
     	   ps.setDouble(7, item.getDistance());
+    	   
+    	   ps.setString(8, item.getName());
+    	   ps.setDouble(9, item.getRating());
+    	   ps.setString(10, item.getAddress());
+    	   ps.setString(11, item.getImageUrl());
+    	   ps.setString(12, item.getUrl());
+    	   ps.setDouble(13, item.getDistance());
     	   ps.execute();
     	   
     	   sql="INSERT IGNORE INTO categories VALUES (?,?)";

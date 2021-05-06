@@ -116,9 +116,11 @@ public class TicketMasterAPI {
 			}
             builder.setAddress(getAddress(event));
             builder.setImageUrl(getImageUrl(event));
+            if(i==0) {System.out.print(getImageUrl(event));}
             builder.setCategories(getCategories(event));
             itemList.add(builder.build());
 		}
+		System.out.print("tm-master get "+itemList.get(0).getImageUrl());
 		return itemList;
 	}
 	private String getAddress(JSONObject event) throws JSONException {
@@ -192,8 +194,8 @@ public class TicketMasterAPI {
 	}
 	
 	
-	public static void main(String args[]) {
+	/*public static void main(String args[]) {
 		TicketMasterAPI tmApi=new TicketMasterAPI();
 		tmApi.queryAPI(51.8624, -2.2471);
-	}
+	}*/
 }

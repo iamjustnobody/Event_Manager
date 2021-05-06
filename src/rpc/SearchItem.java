@@ -130,13 +130,13 @@ public class SearchItem extends HttpServlet {
 		String term=request.getParameter("term");
 		
 //		String userId = request.getParameter("user_id");
-				
+				System.out.println(lat+" "+lon);
 		DBConnection connection=DBConnectionFactory.getConnection(); 
 		try {
 			//before introducing Session
 	//	List<Item> items=connection.searchItems(lat, lon, term);  //tmAPI.search(lat, lon, term);
 			//after introducing session
-			List<Item> items=connection.searchItems(lat, lon, userId); //term
+			List<Item> items=connection.searchItems(lat, lon, term); //term //userId
 			
 			Set<String> favouriteItemIds=connection.getFavouriteItemIds(userId); //after introducing session & userId
 			
@@ -144,7 +144,7 @@ public class SearchItem extends HttpServlet {
 		for(Item item:items) {
 		//	array.put(item.toJSONObject()); //before introducing session & userId
 			JSONObject obj=item.toJSONObject();
-			obj.put("favourite", favouriteItemIds.contains(item.getItemId()));
+			obj.put("favorite", favouriteItemIds.contains(item.getItemId()));
 			array.put(obj);
 		}
 		RpcHelper.writeJsonArray(response, array);

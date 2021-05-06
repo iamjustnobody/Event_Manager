@@ -24,7 +24,7 @@ public class Item {
 		this.address=itemBuilder.address;
 		this.categories=itemBuilder.categories;
 		this.imageUrl=itemBuilder.imageUrl;
-		this.imageUrl=itemBuilder.url;
+		this.url=itemBuilder.url;
 		this.distance=itemBuilder.distance;
 	}
 	public String getItemId() {
